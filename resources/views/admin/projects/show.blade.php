@@ -10,30 +10,31 @@
             <div class="col">
                 @include('partials.success')
 
-                <h1>
-                    {{ $project->title }}
-                </h1>
-
-                <h6>
-                    <span class="fw-bold">
-                        Slug:
-                    </span>
-                    {{ $project->slug }}
-                </h6>
-
-                <p>
-                    <span class="fw-bold">
-                        Descrizione:
-                    </span>
-                    {{ $project->description }}
-                </p>
-
-                <p>
-                    <span class="fw-bold">
-                        Stato:
-                    </span>
-                    {{ $project->status }}
-                </p>
+                <div class="card">
+                    <div class="card-header fw-bold">
+                        #{{ $project->id }} - {{ $project->title }}
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ __('page.description') }}</h5>
+                        <p class="card-text">{{ $project->description }}</p>
+                        <p>
+                            <span class="fw-bold">Slug:</span>
+                            {{ $project->slug }}
+                        </p>
+                        <a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-warning">
+                            <i class="fa-solid fa-wrench"></i> {{ __('page.edit') }}
+                        </a>
+                        <form class="d-inline-block" action="{{ route('admin.projects.destroy', $project->id) }}"
+                            method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare questo progetto?');">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger">
+                                {{-- Elimina --}}
+                                <i class="fa-solid fa-trash-can"></i> {{ __('page.delete') }}
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

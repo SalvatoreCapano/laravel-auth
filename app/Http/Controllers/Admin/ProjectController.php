@@ -84,6 +84,7 @@ class ProjectController extends Controller
     {
         $data = $request->validated();
 
+        // Ricalcoliamo lo slug  nel caso il titolo cambi
         $data['slug'] = Str::slug($data['title']);
 
         $project->update($data);
