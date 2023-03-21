@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('pageTitle')
+    Register | Portfolio
+@endsection
+
 @section('content')
 <div class="container mt-4">
     <div class="row justify-content-center">

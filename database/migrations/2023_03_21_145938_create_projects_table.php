@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title', 64)->unique();
             $table->text('description', 4096)->nullable();
-            $table->enum('status', ['completed', 'active', 'on_hold','cancelled']);
+            $table->enum('status', ['completed', 'active', 'on_hold','cancelled'])->default('on_hold');
             $table->timestamps();
         });
     }
