@@ -32,7 +32,7 @@ class UpdateProjectRequest extends FormRequest
                 Rule::unique('projects')->ignore($this->project->id),
                 'max:128'
             ],
-            'description' => 'required|unique:projects,title|max:64',
+            'description' => 'required',
             'status' => [
                 'required',
                 Rule::in(['completed', 'active', 'on_hold', 'cancelled'])

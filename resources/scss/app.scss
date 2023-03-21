@@ -12,3 +12,9 @@
 main {
     height: 100vh;
 }
+
+#status:focus {
+    option:first-child {
+        display: none;
+    }
+}
