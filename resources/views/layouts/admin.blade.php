@@ -60,10 +60,10 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    {{-- <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.posts.index' ? 'bg-secondary' : '' }}" --}}
-                                        {{-- href="{{ route('admin.posts.index') }}"> --}}
-                                        {{-- <i class="fa-solid fa-file-pen fa-lg fa-fw"></i> Posts --}}
-                                    {{-- </a> --}}
+                                    <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.projects.index' ? 'bg-secondary' : '' }}"
+                                        href="{{ route('admin.projects.index') }}">
+                                        <i class="fa-solid fa-file-pen fa-lg fa-fw"></i> Progetti
+                                    </a>
                                 </li>
                             </ul>
 

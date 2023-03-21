@@ -1,1 +1,10 @@
 @import "~bootstrap/scss/bootstrap";
+
+.logo {
+    height: 32px;
+    img {
+        height: 100%;
+        display: block;
+        filter: invert(100%);
+    }
+}
