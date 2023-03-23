@@ -20,7 +20,7 @@
 
         <div class="row mb-4">
             <div class="col">
-                <form action="{{ route('admin.projects.update', $project->id) }}" method="POST">
+                <form action="{{ route('admin.projects.update', $project->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     @method('PUT')
@@ -63,6 +63,20 @@
                             <option value="on_hold" {{ old('status', $project->status) == 'on_hold' ? 'selected' : '' }}>{{ __('page.on_hold') }}</option>
                             <option value="cancelled" {{ old('status', $project->status) == 'cancelled' ? 'selected' : '' }}>{{ __('page.cancelled') }}</option>
                         </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="image" class="form-label">
+                            Immagine in evidenza
+                        </label>
+
+                        <input
+                            type="file"
+                            class="form-control"
+                            id="image"
+                            name="image"
+                            accept="image/*"
+                            placeholder="Inserisci l'immagine...">
                     </div>
 
                     <div>

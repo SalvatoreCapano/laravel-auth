@@ -15,6 +15,15 @@
                         #{{ $project->id }} - {{ $project->title }}
                     </div>
                     <div class="card-body">
+                        <div class="row">
+                            <div class="imgContainer col-3 mb-4">
+                                @if ($project->image)
+                                    <div>
+                                        <img src="{{ asset('storage/' . $project->image) }}" alt="">
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
                         <h5 class="card-title">{{ __('page.description') }}</h5>
                         <p class="card-text">{{ $project->description }}</p>
                         <p>
