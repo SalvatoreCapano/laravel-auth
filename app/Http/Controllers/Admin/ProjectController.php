@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateProjectRequest;
 
 // Helpers
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -31,7 +32,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view ('admin.projects.create');
+        return view('admin.projects.create');
     }
 
     /**
@@ -46,6 +47,11 @@ class ProjectController extends Controller
 
         $data['slug'] = Str::slug($data['title']);
 
+        if (array_key_exists('image', $data)) {
+            $img_path = Storage::put('projects', $data['image']);
+            $data['image'] = $img_path;
+        }
+
         $newProject = Project::create($data);
 
         return redirect()->route('admin.projects.show', $newProject->id)->with('succes', 'Progetto aggiunto con successo.');
@@ -59,7 +65,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        return view ('admin.projects.show', compact('project'));
+        return view('admin.projects.show', compact('project'));
     }
 
     /**
@@ -70,7 +76,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view ('admin.projects.edit', compact('project'));
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
@@ -83,6 +89,15 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         $data = $request->validated();
+
+        if (array_key_exists('image', $data)) {
+            $imgPath = Storage::put('projects', $data['image']);
+            $data['image'] = $imgPath;
+
+            if ($project->image) {
+                Storage::delete($project->image);
+            }
+        }
 
         // Ricalcoliamo lo slug  nel caso il titolo cambi
         $data['slug'] = Str::slug($data['title']);

@@ -13,6 +13,7 @@ class Project extends Model
         'title',
         'description',
         'status',
-        'slug'
+        'slug',
+        'image'
     ];
 }

@@ -29,6 +29,7 @@ class StoreProjectRequest extends FormRequest
         return [
             'title' => 'required|unique:projects,title|max:64',
             'description' => 'required|unique:projects,title|max:64',
+            'image' => 'nullable|image|max:2048'
             // 'status' => [
             //     'required',
             //     Rule::in(['completed', 'active', 'on_hold', 'cancelled'])

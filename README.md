@@ -11,3 +11,11 @@ Autenticazione: si parte con l'autenticazione e la creazione di un layout per ba
 Creazione del modello Project con relativa migrazione, seeder, controller e rotte
 
 Per la parte di back-office creiamo un resource controller Admin\\ProjectController per gestire tutte le operazioni CRUD dei progetti
+
+## Input Img
+Continuiamo a lavorare nella repo dei giorni scorsi e aggiungiamo un'immagine ai nostri progetti.
+
+Ricordiamoci di creare il symlink con l'apposito comando artisan e di aggiungere l'attributo enctype="multipart/form-data" ai form di creazione e di modifica!
+
+Bonus
+Alla creazione di un nuovo progetto, fare in modo che Laravel invii una mail (su Mailtrap)
