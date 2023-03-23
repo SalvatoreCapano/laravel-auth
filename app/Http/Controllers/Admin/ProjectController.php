@@ -10,6 +10,10 @@ use App\Http\Requests\UpdateProjectRequest;
 // Helpers
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
+
+// Mail
+use App\Mail\NewProject;
 
 class ProjectController extends Controller
 {
@@ -53,6 +57,13 @@ class ProjectController extends Controller
         }
 
         $newProject = Project::create($data);
+
+        Mail::to([
+            'mariorossi@mail.com',
+            'mariabianchi@mail.com',
+            'marcoblu@mail.com',
+            'capano_salvatore@libero.it'
+        ])->send(new NewProject($newProject));
 
         return redirect()->route('admin.projects.show', $newProject->id)->with('succes', 'Progetto aggiunto con successo.');
     }
